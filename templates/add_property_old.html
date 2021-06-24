@@ -1,0 +1,169 @@
+{% extends "index.html" %}
+<html>
+    {% load static %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Add Property</h1>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              add-property
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+<div class="col-sm-12 section-t8">
+<div class="row">
+<div class="col-md-9">
+    <form action="add_property" method="post" role="form">
+        {% csrf_token %}
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <input type="text" name="prop_name" class="form-control form-control-lg form-control-a" placeholder="Name of the Property" required>
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <input type="text" name="slug" class="form-control form-control-lg form-control-a" placeholder="Slug" required>
+          </div>
+      </div>
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <textarea name="description" class="form-control" name="message" cols="45" rows="8" placeholder="Description" required></textarea>
+            </div>
+          </div>
+
+          
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <input type="text" name="address" class="form-control form-control-lg form-control-a" placeholder="Address" required>
+            </div>
+        </div>
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <input type="text" name="address2" class="form-control form-control-lg form-control-a" placeholder="Address 2" required>
+            </div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <input type="text" name="city" class="form-control form-control-lg form-control-a" placeholder="city" required>
+          </div>
+      </div>
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <input type="text" name="price" class="form-control form-control-lg form-control-a" placeholder="Price" required>
+            </div>
+        </div>
+
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <input type="text" name="prop_type" class="form-control form-control-lg form-control-a" placeholder="Property Type" required>
+            </div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <input type="text" name="status" class="form-control form-control-lg form-control-a" placeholder="Status" required>
+          </div>
+      </div>
+
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <input type="text" name="area" class="form-control form-control-lg form-control-a" placeholder="Area" required>
+            </div>
+        </div>
+
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <input type="text" name="bed" class="form-control form-control-lg form-control-a" placeholder="Beds" required>
+            </div>
+        </div>
+
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <input type="text" name="bath" class="form-control form-control-lg form-control-a" placeholder="Bath Rooms" required>
+            </div>
+        </div>
+
+       
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <input type="text" name="pincode" class="form-control form-control-lg form-control-a" placeholder="Pincode" required>
+          </div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+                <input type="file" class="custom-file-input" name="floorplan">
+                <label class="custom-file-label" for="customFile">Floor Plan</label>
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+                  <input type="file" class="custom-file-input" name="image">
+                  <label class="custom-file-label" for="customFile">Image</label>
+            </div>
+          </div>
+
+
+
+        {% for message in messages %}
+        <div class="col-md-12 my-3">
+          <div class="mb-3">
+            <div class="error-message">{{ message }}</div>
+            <!-- <div class="sent-message">Your message has been sent. Thank you!</div> -->
+          </div>
+        </div>
+        {% endfor %} 
+        <br/>
+
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-a">Add Property</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+  </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="col-sm-12 section-t8">
+        <div class="row">
+<div class="alert alert-danger" role="alert">
+    You are not logged in.
+  </div>
+  <div class="col-md-12 text-center">
+    <a href="login.html"><button type="submit" class="btn btn-a">Login</button></a>
+  </div>
+  </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+<!-- Vendor JS Files -->
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+</html>

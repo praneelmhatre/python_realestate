@@ -1,0 +1,89 @@
+{% extends "index.html" %}
+{% block title %} Delete Properties {% endblock %}
+{% load static %}
+<html>
+    {% block content %}
+    {% if user.is_authenticated %}
+    
+    {% if user.id == properties.agent.username.id %}
+
+    <section class="intro-single">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-lg-8">
+              <div class="title-single-box">
+                <h1 class="title-single">Delete Property :</h1>
+                <span class="color-text-a">{{ properties.title }}</span>
+              </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+              <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    delete
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="property-grid grid">
+        <div class="container">
+          <div class="row">
+  {# {% for property in properties %}    {% endfor %} #}
+
+<form method="POST">
+    {% csrf_token %}
+    <strong>Are you sure ?</strong><br/><br/>
+    <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-a">Delete</button>
+      </div>
+</form>
+
+
+</div>
+</div>
+</section>
+
+
+
+{% else %}
+<div class="container">
+    <div class="col-sm-12 section-t8">
+        <div class="row">
+<div class="alert alert-danger" role="alert">
+    You are not Allowed Here !.
+  </div>
+  <div class="col-md-12 text-center">
+    <a href="login.html"><button type="submit" class="btn btn-a">Login</button></a>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+
+{% endif %}
+
+
+
+    {% else %}
+    <div class="container">
+        <div class="col-sm-12 section-t8">
+            <div class="row">
+    <div class="alert alert-danger" role="alert">
+        You are not logged in.
+      </div>
+      <div class="col-md-12 text-center">
+        <a href="login.html"><button type="submit" class="btn btn-a">Login</button></a>
+      </div>
+      </div>
+      </div>
+    </div>
+    {% endif %}
+      {% endblock %}
+  </html>

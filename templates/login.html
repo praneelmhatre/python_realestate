@@ -1,0 +1,77 @@
+{% extends "index.html" %}
+<html>
+    {% load static %}
+{% block content %}
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Login</h1>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              login
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+<div class="col-sm-12 section-t8">
+<div class="row">
+<div class="col-md-9">
+    <form action="login" method="post" role="form">
+        {% csrf_token %}
+      <div class="row">
+       
+        <div class="col-md-12 mb-3">
+            <div class="form-group">
+              <input type="text" name="user_name" class="form-control form-control-lg form-control-a" placeholder="User Name" required>
+            </div>
+          </div>
+       
+        <div class="col-md-12 mb-3">
+          <div class="form-group">
+            <input type="password" name="password" class="form-control form-control-lg form-control-a" placeholder="Password" required>
+          </div>
+        </div>
+        
+        {% for message in messages %}
+        <div class="col-md-12 my-3">
+          <div class="mb-3">
+            <div class="error-message">{{ message }}</div>
+            <!-- <div class="sent-message">Your message has been sent. Thank you!</div> -->
+          </div>
+        </div>
+        {% endfor %} 
+        <br/>
+
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-a">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+{% endblock %}
+<!-- Vendor JS Files -->
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+</html>
